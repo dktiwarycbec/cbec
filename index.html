@@ -1,13 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My AppSheet App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Embed AppSheet application securely">
+    <title>AppSheet Embedded Application</title>
+    <style>
+        /* Responsive iframe container */
+        .appsheet-iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%; /* Adjusted for typical AppSheet app aspect ratio */
+            height: 0;
+            overflow: hidden;
+            background: #e8ecef; /* Light background for loading */
+            margin: 0 auto;
+            max-width: 1200px; /* Max width for larger screens */
+        }
+
+        .appsheet-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .appsheet-iframe-container {
+                padding-bottom: 100%; /* Adjust for mobile screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .appsheet-iframe-container {
+                padding-bottom: 120%; /* Extra height for smaller devices */
+            }
+        }
+
+        /* Fallback message styling */
+        .iframe-fallback {
+            text-align: center;
+            padding: 20px;
+            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 16px;
+        }
+
+        .iframe-fallback a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .iframe-fallback a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<body style="margin:0; padding:0;">
-  <iframe src="https://www.appsheet.com/start/9e33eacf-2357-4e88-aaa7-610474fc7ff5" 
-          width="100%" height="100vh" frameborder="0" 
-          style="position:fixed; top:0; left:0; right:0; bottom:0;">
-  </iframe>
+<body>
+    <div class="appsheet-iframe-container">
+        <iframe 
+            src="https://www.appsheet.com/start/9e33eacf-2357-4e88-aaa7-610474fc7ff5" 
+            title="AppSheet Embedded Application"
+            sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="camera; microphone; geolocation">
+            <div class="iframe-fallback">
+                <p>Your browser does not support iframes. Please visit <a href="https://www.appsheet.com/start/9e33eacf-2357-4e88-aaa7-610474fc7ff5">the AppSheet application</a> directly.</p>
+            </div>
+        </iframe>
+    </div>
 </body>
 </html>
